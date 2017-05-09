@@ -43,6 +43,5 @@
 # Copyright 2017 Your name here, unless otherwise noted.
 #
 class helloworld {
-
-
+  notify { 'hello puppet users!': }
 }

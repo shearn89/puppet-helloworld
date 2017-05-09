@@ -1,0 +1,15 @@
+{
+  "name": "shearn89-helloworld",
+  "version": "0.1.0",
+  "author": "shearn89",
+  "summary": "Simple hello world for testing",
+  "license": "Apache-2.0",
+  "source": "https://github.com/shearn89/puppet-helloworld",
+  "project_page": "https://github.com/shearn89/puppet-helloworld",
+  "issues_url": "https://github.com/shearn89/puppet-helloworld/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ],
+  "data_provider": null
+}
+

@@ -1,0 +1,42 @@
+{
+  "builders": [{
+    "name": "centos73",
+    "type": "virtualbox-iso",
+    "guest_os_type": "RedHat_64",
+    "headless": true,
+    "iso_url": "http://mirrors.ukfast.co.uk/sites/ftp.centos.org/7/isos/x86_64/CentOS-7-x86_64-Minimal-1611.iso",
+    "iso_checksum": "d2ec6cfa7cf6d89e484aa2d9f830517c",
+    "iso_checksum_type": "md5",
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant",
+    "shutdown_command": "sudo -S shutdown -P now",
+    "boot_command": "<up><tab> ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/kickstart.cfg<enter>",
+    "disk_size": "100000",
+    "guest_additions_mode": "attach",
+    "guest_additions_url": "file:///usr/share/virtualbox/VBoxGuestAdditions.iso",
+    "http_directory": "http",
+    "output_directory": "builds",
+    "vboxmanage": [
+      ["modifyvm", "{{.Name}}", "--memory", "1024"],
+      ["modifyvm", "{{.Name}}", "--cpus", "1"]
+    ]
+  }],
+  "provisioners": [
+    {
+      "type": "shell",
+      "scripts": [
+        "scripts/00-setup-basebox.sh",
+        "scripts/01-install-puppet.sh"
+      ]
+    }
+  ],
+  "post-processors": [
+    [{
+      "type": "vagrant",
+      "output": "helloworld_{{.BuildName}}_{{.Provider}}.box"
+    }]
+  ]
+}
+
+
+  

@@ -3,3 +3,4 @@ Gemfile.lock
 vendor/
 *.box
 packer_cache/
+.vagrant/
